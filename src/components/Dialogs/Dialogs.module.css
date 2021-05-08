@@ -1,0 +1,53 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-right: 2px solid grey;
+}
+
+.dialog {
+    text-decoration: none;
+    padding: 5px;
+}
+.dialog .link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.dialog .active {
+    font-size: 22px;
+    font-weight: bold;
+    color: darkgray;
+}
+
+.userAvatar {
+    width: 30px;
+    margin-right: 7px;
+    height: 30px;
+    background-color: grey;
+    border-radius: 50%;
+}
+
+.userAvatar img {
+    width: 30px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.messagesList {
+    margin: 0 0 0 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.message {
+    padding: 10px;
+}
+

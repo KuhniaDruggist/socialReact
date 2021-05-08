@@ -1,0 +1,33 @@
+.info {
+    display: grid;
+    grid-template-columns: 4fr 10fr;
+}
+.userPhoto {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    max-width: 250px;
+    background-color: grey;
+}
+
+.photo {
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.button {
+    border: 1px solid black;
+    background-color: white;
+    width: 150px;
+    padding: 5px;
+    font: inherit;
+}
+
+.fullName,
+.age,
+.aboutMe {
+    margin: 0;
+    padding: 0;
+}

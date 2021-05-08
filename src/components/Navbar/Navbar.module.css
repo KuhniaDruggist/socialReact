@@ -1,0 +1,26 @@
+.wrapper {
+    margin-left: 10px;
+    background-color: grey;
+}
+
+.list {
+    grid-area: nav;
+
+    padding: 0;
+    margin: 0;
+    margin-left: 10px;
+    margin-bottom: 50px;
+    list-style: none;
+}
+
+.item a {
+    display:inline-block;
+    text-decoration: none;
+    padding: 0.4em;
+    font-size: 18px;
+    color: white;
+}
+
+.item a.active {
+    color: black;
+}

@@ -1,0 +1,10 @@
+.label {
+    display: none; /*Временно в дальнейшем лучше через visually-hidden*/
+}
+
+.input {
+    padding: 0.5em;
+    border: none;
+    border-radius: 5px;
+    font: inherit;
+}
