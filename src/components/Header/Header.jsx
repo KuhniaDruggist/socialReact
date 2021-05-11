@@ -15,7 +15,7 @@ const Header = () => {
 
             <ul className="user-navigation">
               <li>
-                <NavLink className="login-link">Вход</NavLink>
+                <NavLink className="login-link" to="/login">Вход</NavLink>
               </li>
             </ul>
         </header>

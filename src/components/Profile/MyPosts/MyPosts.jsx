@@ -9,15 +9,21 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
+        props.addPost();
+    }
+
+    let addChange = () => {
         let text = newPostElement.current.value;
-        props.addPost(text);
+        props.updateNewPostText(text);
     }
 
     return (
         <div className={s.wrapper}>
             <h2>Здесь будут мои публикации</h2>
             <div>
-                <textarea ref={newPostElement}/>
+                <textarea onChange={addChange}
+                          ref={newPostElement}
+                          value={props.postText}/>
                 <button onClick={addPost} type="button">Добавить</button>
             </div>
             <ul className={s.list}>
