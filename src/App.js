@@ -1,23 +1,20 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
-import Navbar from './components/Navbar/Navbar';
+import NavbarContainer from "./components/Navbar/NavbarContainer";
 import Profile from './components/Profile/Profile';
-import Dialogs from "./components/Dialogs/Dialogs";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {Route} from 'react-router-dom';
 
 const App = (props) => {
+    debugger
     return (
         <div className="app-wrapper">
             <Header/>
-            <Navbar state={props.state.navbar}/>
+            <NavbarContainer store={props.store} />
             <div className="app-wrapper-content">
-                <Route path='/profile' render={() => <Profile state={props.state.profilePage}
-                                                              addPost={props.addPost}
-                                                              updateNewPostText={props.updateNewPostText}/>}/>
-                <Route path='/dialogs' render={() => <Dialogs state={props.state.messagesPage}
-                                                              addNewMessage={props.addNewMessage}
-                                                              updateNewMessageText={props.updateNewMessageText}/>}/>
+                <Route path='/profile' render={() => <Profile store={props.store} />} />
+                <Route path='/dialogs' render={() => <DialogsContainer store={props.store} />} />
             </div>
         </div>
     );

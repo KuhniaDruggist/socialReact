@@ -3,28 +3,28 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-
+debugger
     let postsElements = props.posts.map( post => <Post name={post.name} text={post.text} likes={post.likes} />);
 
     let newPostElement = React.createRef();
 
-    let addPost = () => {
+    let onAddPost = () => {
         props.addPost();
     }
 
-    let addChange = () => {
+    let onAddChange = () => {
         let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        props.addChange(text);
     }
 
     return (
         <div className={s.wrapper}>
             <h2>Здесь будут мои публикации</h2>
             <div>
-                <textarea onChange={addChange}
+                <textarea onChange={onAddChange}
                           ref={newPostElement}
                           value={props.postText}/>
-                <button onClick={addPost} type="button">Добавить</button>
+                <button onClick={onAddPost} type="button">Добавить</button>
             </div>
             <ul className={s.list}>
                 {postsElements}

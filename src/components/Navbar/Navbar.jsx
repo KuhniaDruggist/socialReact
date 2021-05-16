@@ -32,7 +32,7 @@ const Navbar = (props) => {
                 </ul>
             </nav>
 
-            <BestFriends friensd={props.state.bestFriends}/>
+            <BestFriends bestFriends={props.bestFriends}/>
         </div>
     );
 }
