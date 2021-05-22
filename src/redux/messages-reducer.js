@@ -11,7 +11,8 @@ let initialState = {
         {
             id: 2,
             name: 'Ivan',
-            photo: 'https://image.freepik.com/free-vector/bearded-man-avatar-man-vector-portrait_9385-36.jpg'},
+            photo: 'https://image.freepik.com/free-vector/bearded-man-avatar-man-vector-portrait_9385-36.jpg'
+        },
         {
             id: 3,
             name: 'Stepan',
@@ -33,24 +34,24 @@ let initialState = {
 
 const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
+        case UPDATE_NEW_MESSAGE_TEXT: {
+            return {
+                ...state,
+                messageText: action.newText
+            };
+        }
         case ADD_NEW_MESSAGE:
-            let newMessage = {
-                id: 4,
-                text: state.messageText
-            }
-            state.messages.push(newMessage);
-            state.messageText = '';
-            return state;
-
-        case UPDATE_NEW_MESSAGE_TEXT:
-            state.messageText = action.newText;
-            return state;
-
+            let text = state.messageText;
+            return {
+                ...state,
+                messageText: '',
+                messages: [...state.messages, {id: 4, text: text}]
+            };
         default:
             return state;
     }
 };
-export const addNewMessage = () => ({ type: ADD_NEW_MESSAGE});
-export const updateNewMessageText = (text) => (
-    { type: UPDATE_NEW_MESSAGE_TEXT, newText: text });
+
+export const updateNewMessageTextAC = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text});
+export const addNewMessageAC = () => ({type: ADD_NEW_MESSAGE});
 export default messagesReducer;
