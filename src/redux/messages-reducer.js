@@ -40,13 +40,14 @@ const messagesReducer = (state = initialState, action) => {
                 messageText: action.newText
             };
         }
-        case ADD_NEW_MESSAGE:
+        case ADD_NEW_MESSAGE: {
             let text = state.messageText;
             return {
                 ...state,
                 messageText: '',
                 messages: [...state.messages, {id: 4, text: text}]
             };
+        }
         default:
             return state;
     }

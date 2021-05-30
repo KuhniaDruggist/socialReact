@@ -1,0 +1,74 @@
+.paginationList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.page {
+    padding: 2px;
+}
+
+.page button {
+    cursor: pointer;
+    display: inline-block;
+    width: 19px;
+    padding: 2px;
+    border: none;
+    background: none;
+}
+
+.page .active {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: grey;
+    color: gold;
+}
+
+.usersList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.userItem {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.columnOne {
+    margin-right: 50px;
+    text-align: center;
+}
+
+.columnOne img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+}
+.columnOne button {
+    cursor: pointer;
+    display: inline-block;
+    background: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font: inherit;
+    font-weight: bold;
+}
+
+.columnOne .follow {
+    background-color: green;
+}
+
+.columnTwo {
+    width: 500px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
