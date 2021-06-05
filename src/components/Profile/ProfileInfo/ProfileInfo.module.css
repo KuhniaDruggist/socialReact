@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 4fr 10fr;
 }
+
 .userPhoto {
     padding: 10px;
     display: flex;
@@ -25,9 +26,40 @@
     font: inherit;
 }
 
-.fullName,
-.age,
-.aboutMe {
+.fullName {
+    font-size: 30px;
     margin: 0;
     padding: 0;
+}
+
+.aboutMe {
+    font-size: 20px;
+    color: darkgray;
+    margin: 0;
+    padding: 0;
+}
+
+.job {
+    margin-top: 50px;
+}
+
+.job p {
+    margin: 0;
+    padding: 0;
+}
+
+.jobSearch {
+    display: flex;
+}
+
+.jobSearch img {
+    margin-top: -3px;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.jobStatus {
+    font-weight: bold;
+    color: goldenrod;
 }

@@ -4,7 +4,7 @@ import Logo from './Logo/Logo';
 import Search from './Search/Search'
 import {NavLink} from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
     return (
         <header className={s.header}>
           <Logo />
@@ -13,9 +13,9 @@ const Header = () => {
             <button type="button">Уведомления</button>
             <button type="button">Музыка</button>
 
-            <ul className="user-navigation">
+            <ul className={s.userNavigation}>
               <li>
-                <NavLink className="login-link" to="/login">Вход</NavLink>
+                  { props.isAuth ? props.login : <NavLink className="login-link" to="/login">Вход</NavLink>}
               </li>
             </ul>
         </header>

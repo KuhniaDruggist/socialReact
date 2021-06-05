@@ -1,6 +1,7 @@
 import React from 'react'
 import s from './Users.module.css';
 import userPhotoDefault from '../../assets/img/user.png'
+import {NavLink} from "react-router-dom";
 
 let Users = (props) => {
 
@@ -19,8 +20,10 @@ let Users = (props) => {
                     props.users.map(user =>
                         <li className={s.userItem} key={user.id}>
                             <div className={s.columnOne}>
-                                <img alt='Фото пользователя'
-                                     src={user.photos.small != null ? user.photos.small : userPhotoDefault}/>
+                                <NavLink to={`/profile/${user.id}`}>
+                                    <img alt='Фото пользователя'
+                                         src={user.photos.small != null ? user.photos.small : userPhotoDefault}/>
+                                </NavLink>
                                 <div>
                                     {user.followed
                                         ? <button className={`${s.button} ${s.follow}`}
