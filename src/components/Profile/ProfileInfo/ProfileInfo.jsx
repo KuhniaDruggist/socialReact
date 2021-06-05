@@ -8,7 +8,6 @@ const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader />
     }
-debugger
     return (
         <div className={s.info}>
             <div className={s.userPhoto}>
