@@ -13,7 +13,7 @@ const MyPosts = (props) => {
 
     let onAddChange = () => {
         let text = newPostElement.current.value;
-        props.addChange(text);
+        props.updateNewPostText(text);
     }
 
     return (

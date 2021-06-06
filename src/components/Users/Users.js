@@ -2,8 +2,6 @@ import React from 'react'
 import s from './Users.module.css';
 import userPhotoDefault from '../../assets/img/user.png'
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
-import {setFollowingInProgress} from "../../redux/users-reducer";
 
 let Users = (props) => {
 
@@ -14,6 +12,7 @@ let Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
+
 
     return (
         <div>
@@ -28,29 +27,17 @@ let Users = (props) => {
                                 </NavLink>
                                 <div>
                                     {user.followed
-                                        ? <button disabled={props.followingInProgress.some(id => id === user.id)} className={`${s.button} ${s.unfollow}`}
-                                                  type="button"
+                                        ? <button type="button"
+                                                  disabled={props.followingInProgress.some(id => id === user.id)}
+                                                  className={`${s.button} ${s.unfollow}`}
                                                   onClick={() => {
-                                                      props.setFollowingInProgress(true, user.id);
-                                                      usersAPI.deleteFollow(user.id)
-                                                          .then(data => {
-                                                              if(data.resultCode === 0) {
-                                                                  props.unfollow(user.id)
-                                                              }
-                                                              props.setFollowingInProgress(false, user.id);
-                                                          });
+                                                      props.unfollow(user.id)
                                                   }}>Unfollow</button>
-                                        : <button disabled={props.followingInProgress.some(id => id === user.id)} className={`${s.button} ${s.follow}`}
-                                                  type="button"
+                                        : <button type="button"
+                                                  disabled={props.followingInProgress.some(id => id === user.id)}
+                                                  className={`${s.button} ${s.follow}`}
                                                   onClick={() => {
-                                                      props.setFollowingInProgress(true, user.id);
-                                                      usersAPI.createFollow(user.id)
-                                                          .then(data => {
-                                                              if(data.resultCode === 0) {
-                                                                  props.follow(user.id)
-                                                              }
-                                                              props.setFollowingInProgress(false, user.id);
-                                                          });
+                                                      props.follow(user.id)
                                                   }}>Follow</button>}
                                 </div>
                             </div>
