@@ -3,6 +3,7 @@ import s from './Users.module.css';
 import userPhotoDefault from '../../assets/img/user.png'
 import {NavLink} from "react-router-dom";
 import {usersAPI} from "../../api/api";
+import {setFollowingInProgress} from "../../redux/users-reducer";
 
 let Users = (props) => {
 
@@ -27,25 +28,29 @@ let Users = (props) => {
                                 </NavLink>
                                 <div>
                                     {user.followed
-                                        ? <button className={`${s.button} ${s.unfollow}`}
+                                        ? <button disabled={props.followingInProgress.some(id => id === user.id)} className={`${s.button} ${s.unfollow}`}
                                                   type="button"
                                                   onClick={() => {
+                                                      props.setFollowingInProgress(true, user.id);
                                                       usersAPI.deleteFollow(user.id)
                                                           .then(data => {
                                                               if(data.resultCode === 0) {
                                                                   props.unfollow(user.id)
                                                               }
+                                                              props.setFollowingInProgress(false, user.id);
                                                           });
                                                   }}>Unfollow</button>
-                                        : <button className={`${s.button} ${s.follow}`}
+                                        : <button disabled={props.followingInProgress.some(id => id === user.id)} className={`${s.button} ${s.follow}`}
                                                   type="button"
                                                   onClick={() => {
+                                                      props.setFollowingInProgress(true, user.id);
                                                       usersAPI.createFollow(user.id)
                                                           .then(data => {
                                                               if(data.resultCode === 0) {
                                                                   props.follow(user.id)
-                                                          }
-                                                      });
+                                                              }
+                                                              props.setFollowingInProgress(false, user.id);
+                                                          });
                                                   }}>Follow</button>}
                                 </div>
                             </div>

@@ -12,7 +12,7 @@ class ProfileContainer extends React.Component {
             userId = 2;
         }
         usersAPI.getProfile(`${userId}`)
-            .then(response => {
+            .then(data => {
                 this.props.setUserProfile(data);
             }
         )
