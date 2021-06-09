@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import Users from "./Users";
 import {getUsers, follow, unfollow, setActivePage} from "../../redux/users-reducer";
 import Preloader from "../common/Preloader/Preloader";
-import {Redirect} from "react-router-dom";
+import {withAuthRedirect} from "../hoc/withAuthRedirect";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -16,8 +16,6 @@ class UsersContainer extends React.Component {
     }
 
     render() {
-        if(!this.props.isAuth) return <Redirect to={"/login"}/>
-
         return <>
             {this.props.isFetching ? <Preloader/> : null}
             <Users totalUsersCount={this.props.totalUsersCount}
@@ -39,10 +37,11 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         activePage: state.usersPage.activePage,
         isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress,
-        isAuth: state.auth.isAuth
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 
+let AuthRedirectComponent = withAuthRedirect(UsersContainer);
+
 export default connect(mapStateToProps,
-    {getUsers, follow, unfollow, setActivePage})(UsersContainer);
+    {getUsers, follow, unfollow, setActivePage})(AuthRedirectComponent);
