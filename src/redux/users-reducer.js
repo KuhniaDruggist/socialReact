@@ -77,17 +77,17 @@ export const toggleFollowingProgress = (isFetching, userId) => ({type: SET_FOLLO
 export const getUsers = (activePage, pageSize) => (dispatch) => {
     dispatch(setFetching(true));
     usersAPI.getUsers(activePage, pageSize)
-        .then(data => {
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
+        .then(response => {
+            dispatch(setUsers(response.data.items));
+            dispatch(setTotalUsersCount(response.data.totalCount));
             dispatch(setFetching(false));
         });
 }
 export const follow = (userId) => (dispatch) => {
     dispatch(toggleFollowingProgress(true, userId));
     usersAPI.createFollow(userId)
-        .then(data => {
-            if(data.resultCode === 0) {
+        .then(response => {
+            if(response.data.resultCode === 0) {
                 dispatch(followSuccess(userId))
             }
             dispatch(toggleFollowingProgress(false, userId));
@@ -96,8 +96,8 @@ export const follow = (userId) => (dispatch) => {
 export const unfollow = (userId) => (dispatch) => {
     dispatch(toggleFollowingProgress(true, userId));
     usersAPI.deleteFollow(userId)
-        .then(data => {
-            if(data.resultCode === 0) {
+        .then(response => {
+            if(response.data.resultCode === 0) {
                 dispatch(unfollowSuccess(userId))
             }
             dispatch(toggleFollowingProgress(false, userId));
