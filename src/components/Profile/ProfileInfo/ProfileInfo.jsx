@@ -3,6 +3,7 @@ import s from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
 import like from '../../../assets/img/like.png';
 import dislike from '../../../assets/img/dislike.png';
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -29,6 +30,8 @@ const ProfileInfo = (props) => {
                     </div>
                     <p className={s.jobStatus}>{props.profile.lookingForAJobDescription}</p>
                 </div>
+
+                <ProfileStatus myStatus={'Сейчас я препод по React'}/>
             </div>
         </div>
     );
