@@ -13,13 +13,26 @@ export const usersAPI = {
         return instance.get(`users?page=${activePage}&count=${pageSize}`);
     },
     getProfile(id) {
-        return instance.get(`profile/${id}`);
+        console.warn("Please, use profile API")
+        return profileAPI.getProfile(id);
     },
     createFollow(id) {
         return instance.post(`follow/${id}`);
     },
     deleteFollow(id) {
         return instance.delete(`follow/${id}`);
+    }
+}
+
+export const profileAPI = {
+    getProfile(id) {
+        return instance.get(`profile/${id}`);
+    },
+    getUserStatus(id) {
+        return instance.get(`profile/status/${id}`);
+    },
+    updateUserStatus(status) {
+        return instance.put(`profile/status`, { status });
     }
 }
 

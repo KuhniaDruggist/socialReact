@@ -9,6 +9,7 @@ const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader />
     }
+    
     return (
         <div className={s.info}>
             <div className={s.userPhoto}>
@@ -30,8 +31,8 @@ const ProfileInfo = (props) => {
                     </div>
                     <p className={s.jobStatus}>{props.profile.lookingForAJobDescription}</p>
                 </div>
-
-                <ProfileStatus myStatus={'Сейчас я препод по React'}/>
+                <ProfileStatus status={props.status}
+                               updateUserStatus={props.updateUserStatus}/>
             </div>
         </div>
     );
