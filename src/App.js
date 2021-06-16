@@ -11,13 +11,13 @@ import Login from "./components/Login/Login";
 const App = (props) => {
     return (
         <div className="app-wrapper">
-            <HeaderContainer store={props.store}/>
-            <NavbarContainer store={props.store} />
+            <HeaderContainer />
+            <NavbarContainer />
             <div className="app-wrapper-content">
-                <Route path='/profile/:userId?' render={() => <ProfileContainer store={props.store} />} />
-                <Route path='/dialogs' render={() => <DialogsContainer store={props.store} />} />
-                <Route path='/users' render={() => <UsersContainer store={props.store} />} />
-                <Route path='/login' render={() => <Login store={props.store} />} />
+                <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+                <Route path='/dialogs' render={() => <DialogsContainer />} />
+                <Route path='/users' render={() => <UsersContainer />} />
+                <Route path='/login' render={() => <Login />} />
             </div>
         </div>
     );
