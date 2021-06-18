@@ -1,0 +1,37 @@
+.form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    font: inherit;
+    margin-bottom: 10px;
+    padding: 10px;
+    resize: none;
+}
+
+.button {
+    cursor: pointer;
+    display: inline-block;
+    background: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font: inherit;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: lightgrey;
+}
+
+.button:active {
+    background-color: gray;
+}
+
+.posts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
