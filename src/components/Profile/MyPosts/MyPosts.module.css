@@ -1,14 +1,7 @@
 .form {
-    width: 300px;
+    width: 350px;
     display: flex;
     flex-direction: column;
-}
-
-.field {
-    font: inherit;
-    margin-bottom: 10px;
-    padding: 10px;
-    resize: none;
 }
 
 .button {

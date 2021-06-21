@@ -1,13 +1,25 @@
 import React from 'react';
-import s from './MyPosts.module.css';
 import Post from './Post/Post';
+import s from './MyPosts.module.css';
 import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../../utils/validators/validateForm";
+import {Input, Textarea} from "../../common/customFields/CustomFields";
+
+const maxLength15 = maxLengthCreator(15);
+const maxLength100 = maxLengthCreator(100);
 
 const MyPostForm = (props) => {
     return (
         <form className={s.form} onSubmit={props.handleSubmit}>
-            <Field className={s.field} component='input' name='newPostTitle' placeholder='Озаглавьте свой пост'></Field>
-            <Field className={s.field} component='textarea' name='newPostText' placeholder='Добавьте текст поста'/>
+            <Field component={Input}
+                   name='newPostTitle'
+                   placeholder='Озаглавьте свой пост'
+                   validate={[ required, maxLength15 ]} />
+
+            <Field component={Textarea}
+                   name='newPostText'
+                   placeholder='Добавьте текст поста'
+                   validate={[ required, maxLength100 ]} />
             <button className={s.button} type="submit">Добавить</button>
         </form>
     );
@@ -23,10 +35,10 @@ const MyPosts = (props) => {
     }
 
     return (
-        <div className={s.wrapper}>
+        <div>
             <h2>Здесь будут мои публикации</h2>
             <MyPostReduxForm onSubmit={addNewPost}/>
-            <ul className={s.posts}>
+            <ul>
                 {postsElements}
             </ul>
         </div>

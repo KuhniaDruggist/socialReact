@@ -1,0 +1,39 @@
+.formControl {
+    position: relative;
+}
+
+.formControl textarea,
+.formControl input {
+    box-sizing: border-box;
+    font: inherit;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    resize: none;
+}
+
+.error textarea,
+.error input {
+    outline: none;
+    border: 1px solid red;
+}
+
+.error p {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 150px;
+    border: 1px solid red;
+    border-radius: 5px;
+    margin-top: 0;
+    margin-left: 5px;
+    padding: 5px;
+    font-size: 10px;
+    color: red;
+}
+
+.field {
+
+}
