@@ -14,9 +14,10 @@ const Header = (props) => {
             <button type="button">Музыка</button>
 
             <ul className={s.userNavigation}>
-              <li>
-                  { props.isAuth ? props.login : <NavLink className="login-link" to="/login">Вход</NavLink>}
-              </li>
+                { props.isAuth
+                    ? <li>{props.login} <button type="button" onClick={props.logout}>Log out</button></li>
+                    : <li><NavLink className="login-link" to="/login">Вход</NavLink></li>
+                }
             </ul>
         </header>
     );

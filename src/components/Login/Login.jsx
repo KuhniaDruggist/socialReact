@@ -3,24 +3,28 @@ import s from './Login.module.css';
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/customFields/CustomFields";
 import {maxLengthCreator, required} from "../../utils/validators/validateForm";
+import {login} from "../../redux/auth-reducer";
+import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 
-const maxLength15 = maxLengthCreator(15);
+const maxLength30 = maxLengthCreator(30);
 
 const LoginForm = (props) => {
 
     return (
         <form className={s.form} onSubmit={props.handleSubmit}>
-            <label className={s.label}>login:
+            <label className={s.label}>Email:
                 <Field component={Input}
-                       name={'login'}
+                       name={'email'}
                        placeholder={'Алексей'}
-                       validate={[ required, maxLength15 ]} />
+                       validate={[ required, maxLength30 ]} />
             </label>
             <label className={s.label}>Password:
                 <Field component={Input}
+                       type={'password'}
                        name={'password'}
                        placeholder={'*******'}
-                       validate={[ required, maxLength15 ]} />
+                       validate={[ required, maxLength30 ]} />
             </label>
             <label className={s.label}>Remember me:
                 <Field component={Input}
@@ -37,8 +41,11 @@ const LoginReduxForm = reduxForm({form: 'login'})(LoginForm);
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData);
+        props.login(formData.email, formData.password, formData.rememberMe);
     }
+
+    if (props.isAuth) return <Redirect to={"/profile"}/>
+
     return(
         <div>
             <h1>Осуществите вход в систему</h1>
@@ -47,4 +54,10 @@ const Login = (props) => {
     );
 }
 
-export default Login
+const mapStateToProps = (state) => {
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
+
+export default connect(mapStateToProps, { login })(Login);
