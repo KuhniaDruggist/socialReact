@@ -10,7 +10,6 @@ import {Redirect} from "react-router-dom";
 const maxLength30 = maxLengthCreator(30);
 
 const LoginForm = (props) => {
-
     return (
         <form className={s.form} onSubmit={props.handleSubmit}>
             <label className={s.label}>Email:
@@ -33,6 +32,7 @@ const LoginForm = (props) => {
                        validate={[ required ]}/>
             </label>
             <button>Log in</button>
+            {props.error && <p className={s.error}>{props.error}</p>}
         </form>
     );
 }
